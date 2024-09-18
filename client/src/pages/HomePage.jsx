@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomePage() {
   return (
-    <h1>Hello wolrd !</h1>
+    <h1 className='text-cyan-500'>Hello wolrd !</h1>
   )
 }
 
