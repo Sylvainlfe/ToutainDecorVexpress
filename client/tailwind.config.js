@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "logo-color":"#DDC962",
+      },
+      backgroundImage: {
+        "bg-marbre":"url('/src/assets/images/bg-marbre.jpg')"
+      }
+    },
   },
   plugins: [],
 }

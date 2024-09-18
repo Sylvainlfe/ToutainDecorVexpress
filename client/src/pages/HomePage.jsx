@@ -1,8 +1,11 @@
 import React from 'react'
+import HeroSection from '../components/HeroSection'
 
 function HomePage() {
   return (
-    <h1 className='text-cyan-500'>Hello wolrd !</h1>
+    <main>
+      <HeroSection />
+    </main>
   )
 }
 

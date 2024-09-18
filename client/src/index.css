@@ -23,10 +23,74 @@
   --textFont: "PlayfairDisplay", sans-serif;
 }
 
-p, a, li {
+p, a, li, h2, button {
   font-family: var(--textFont);
 }
 
 h1 {
   font-family: var(--logoFont);
+}
+
+
+
+button {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  z-index: 1;
+  position: relative;
+  background-color: transparent;
+}
+
+button::before {
+  content: "";
+  background-color: #fff;
+  display: block;
+  width: 45px;
+  height: 1px;
+  margin-right: 20px;
+}
+
+button::after {
+  content: "";
+  background-color: #DDC962;
+  display: block;
+  width: 0%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+button:hover {
+  color: #232963;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+button:hover::after {
+  width: 100%;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+button:hover::before {
+  background-color: #232963;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
