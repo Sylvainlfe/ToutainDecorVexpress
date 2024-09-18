@@ -9,11 +9,12 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api`);
         if (!response.ok) {
           throw new Error(`Erreur HTTP! statut: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
         setMessage(data.message);
       } catch (e) {
         console.error("Une erreur s'est produite:", e);
