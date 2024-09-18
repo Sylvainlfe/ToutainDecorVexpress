@@ -1,10 +1,14 @@
+require('dotenv').config();
+
 const express = require("express");
 const cors = require("cors");
-const corsOptions = {
-    origin: ["http://localhost:5173"]
-}
+
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.APP_PORT;
+
+const corsOptions = {
+  origin: [process.env.CLIENT_URL]
+}
 
 // Middleware
 app.use(cors(corsOptions));
@@ -16,6 +20,6 @@ app.get("/api", (req, res) => {
 });
 
 // Démarrage du serveur
-app.listen(PORT, () => {
-  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Serveur en cours d'exécution sur le port ${port}`);
 });
