@@ -18,7 +18,7 @@ function HeroSection() {
         exercitationem quam odio molestias non labore laudantium voluptas
         officiis.
       </p>
-      <Link to="/ProjectsPage" className="text-white">
+      <Link to="/ProjectsPage" className="text-white" id='linkButton'>
         Découvrez
       </Link>
     </article>

@@ -6,6 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -23,7 +24,7 @@
   --textFont: "PlayfairDisplay", sans-serif;
 }
 
-p, a, li, h2, button {
+p, a, li, h2, button, label, input {
   font-family: var(--textFont);
 }
 
@@ -33,7 +34,7 @@ h1 {
 
 
 
-button {
+#linkButton {
   display: inline-flex;
   align-items: center;
   color: #fff;
@@ -45,7 +46,7 @@ button {
   background-color: transparent;
 }
 
-button::before {
+#linkButton::before {
   content: "";
   background-color: #fff;
   display: block;
@@ -54,7 +55,7 @@ button::before {
   margin-right: 20px;
 }
 
-button::after {
+#linkButton::after {
   content: "";
   background-color: #DDC962;
   display: block;
@@ -70,7 +71,7 @@ button::after {
   transition: all 0.3s ease-out;
 }
 
-button:hover {
+#linkButton:hover {
   color: #232963;
   text-decoration: none;
   -webkit-transition: all 0.3s ease-out;
@@ -79,7 +80,7 @@ button:hover {
   transition: all 0.3s ease-out;
 }
 
-button:hover::after {
+#linkButton:hover::after {
   width: 100%;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -87,7 +88,7 @@ button:hover::after {
   transition: all 0.3s ease-out;
 }
 
-button:hover::before {
+#linkButton:hover::before {
   background-color: #232963;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
