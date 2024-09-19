@@ -1,0 +1,9 @@
+CREATE TABLE contact (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR(55) NOT NULL UNIQUE,
+    firstname VARCHAR(55) NOT NULL,
+    lastname VARCHAR(55) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    comment TEXT NOT NULL
+);

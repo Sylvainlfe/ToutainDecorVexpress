@@ -93,7 +93,7 @@ function ContactPage() {
   }, [actionData]);
 
   return (
-    <Form method="post">
+   
       <Contact
         handleChangeInputValue={handleChangeInputValue}
         fields={fields}
@@ -105,7 +105,7 @@ function ContactPage() {
         locationRef={locationRef}
         commentRef={commentRef}
       />
-    </Form>
+    
   );
 }
 

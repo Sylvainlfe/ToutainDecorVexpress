@@ -14,10 +14,30 @@ function Contact({ handleChangeInputValue, fields, formValues, emailRef, firstNa
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Soumettre le formulaire
+      try {
+        console.log('Envoi des données:', formValues);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formValues),
+        });
+        const data = await response.json();
+        console.log('Réponse du serveur:', data);
+        if (data.emailSent) {
+          alert('Message envoyé avec succès !');
+          // Réinitialiser le formulaire ici si nécessaire
+        } else {
+          alert('Le message a été enregistré, mais l\'envoi de l\'email a échoué.');
+        }
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi du formulaire:', error);
+        alert('Une erreur est survenue lors de l\'envoi du message.');
+      }
     }
   };
 
