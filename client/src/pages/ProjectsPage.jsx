@@ -1,8 +1,9 @@
 import React from 'react'
+import ProjectCard from '../components/ProjectCard'
 
 function ProjectsPage() {
   return (
-    <div>ProjectsPage</div>
+    <ProjectCard />
   )
 }
 

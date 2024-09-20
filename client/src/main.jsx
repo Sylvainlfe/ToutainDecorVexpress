@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { sendData } from "./services/api.service.js"
+import { sendContactData } from "./services/api.service.js"
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx"
+import ProjectsPages from "./pages/ProjectsPage.jsx"
+import Dashboard from "./pages/Dashboard.jsx"
 
 const router = createBrowserRouter([
   {
@@ -17,11 +19,19 @@ const router = createBrowserRouter([
       {
         path: "/ContactPage",
         element: <ContactPage />,
-        action: async({request}) => {
-          const formData = Object.fromEntries(await request.formData());
-          const response = await sendData("api/send-mail", formData);
-          return response
+        action: async ({ request }) => {
+          const formData = await request.formData();
+          const data = Object.fromEntries(formData);
+          return sendContactData("api/contact", data);
         }
+      },
+      {
+        path: "/ProjectsPage",
+        element: <ProjectsPages />,
+      },
+      {
+        path: "/admin",
+        element: <Dashboard />,
       },
     ],
   },

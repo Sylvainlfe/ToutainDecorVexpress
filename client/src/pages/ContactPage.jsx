@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Contact from "../components/Contact";
-import { Form, useActionData } from "react-router-dom";
+import { useActionData } from "react-router-dom";
+import { useSubmit } from "react-router-dom";
 
 const emptyFields = {
   firstname: "",
@@ -18,9 +19,11 @@ function ContactPage() {
   const locationRef = useRef();
   const commentRef = useRef();
 
+  const submit = useSubmit();
+
   const textLabel = [
     {
-      required:true,
+      required: true,
       type: "text",
       id: "firstname",
       for: "firstname",
@@ -28,7 +31,7 @@ function ContactPage() {
       ref: firstNameRef,
     },
     {
-      required:true,
+      required: true,
       type: "text",
       id: "lastname",
       for: "lastname",
@@ -36,7 +39,7 @@ function ContactPage() {
       ref: lastNameRef,
     },
     {
-      required:true,
+      required: true,
       type: "email",
       id: "email",
       for: "email",
@@ -44,7 +47,7 @@ function ContactPage() {
       ref: emailRef,
     },
     {
-      required:true,
+      required: true,
       type: "tel",
       id: "phone",
       for: "phone",
@@ -52,7 +55,7 @@ function ContactPage() {
       ref: phoneRef,
     },
     {
-      required:true,
+      required: true,
       type: "text",
       id: "location",
       for: "location",
@@ -60,7 +63,7 @@ function ContactPage() {
       ref: locationRef,
     },
     {
-      required:true,
+      required: true,
       type: "textarea",
       id: "comment",
       for: "comment",
@@ -72,6 +75,18 @@ function ContactPage() {
   const actionData = useActionData();
   const [formValues, setFormValues] = useState(emptyFields);
   const [fields, setFields] = useState(textLabel);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    fields.forEach((field) => {
+      if (field.required && !formValues[field.id]) {
+        newErrors[field.id] = "Ce champ est obligatoire";
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
@@ -92,20 +107,27 @@ function ContactPage() {
     }
   }, [actionData]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      submit(formValues, { method: "post", action: "/ContactPage" });
+    }
+  };
+
   return (
-   
-      <Contact
-        handleChangeInputValue={handleChangeInputValue}
-        fields={fields}
-        formValues={formValues}
-        emailRef={emailRef}
-        firstNameRef={firstNameRef}
-        lastNameRef={lastNameRef}
-        phoneRef={phoneRef}
-        locationRef={locationRef}
-        commentRef={commentRef}
-      />
-    
+    <Contact
+      handleChangeInputValue={handleChangeInputValue}
+      handleSubmit={handleSubmit}
+      fields={fields}
+      formValues={formValues}
+      emailRef={emailRef}
+      firstNameRef={firstNameRef}
+      lastNameRef={lastNameRef}
+      phoneRef={phoneRef}
+      locationRef={locationRef}
+      commentRef={commentRef}
+      errors={errors}
+    />
   );
 }
 

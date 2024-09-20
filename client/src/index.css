@@ -32,6 +32,10 @@ h1 {
   font-family: var(--logoFont);
 }
 
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 
 #linkButton {
