@@ -33,8 +33,14 @@ const browse = async (req, res, next) => {
     const contact = req.body;
     try {
       console.log('Données de contact reçues:', contact);
-      const insertId = await tables.contact.create(contact);
-      console.log('Contact inséré avec l\'ID:', insertId);
+      const existingContact = await tables.contact.findContactByEmail(contact.email);
+      let insertId;
+      if (existingContact) {
+        insertId = existingContact.id;
+      } else {
+        insertId = await tables.contact.create(contact);
+      }
+      console.log('Contact inséré ou trouvé avec l\'ID:', insertId);
       const emailSent = await sendContactEmail(contact);
       console.log('Résultat de l\'envoi d\'e-mail:', emailSent);
   

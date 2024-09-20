@@ -19,7 +19,7 @@ const sendContactEmail = async (contactData) => {
     subject: 'Nouveau message de contact',
     text: `
       Nom: ${firstname} ${lastname}
-      Email: ${email}
+      Email du visiteur: ${email}
       Téléphone: ${phone}
       Ville: ${location}
       Commentaire: ${comment}
