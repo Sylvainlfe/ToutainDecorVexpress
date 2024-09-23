@@ -8,6 +8,6 @@ router.use("/contact", contactRouter);
 
 const registerRouter = require("./user/router");
 
-router.use("/register", registerRouter);
+router.use("/user", registerRouter);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSubmit } from 'react-router-dom';
 import Logging from '../components/Logging';
 
 const emptyFields = {
@@ -16,6 +16,7 @@ const registerContent = {
 function RegisterPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const submit = useSubmit();
 
   const textLabel = [
     {
@@ -51,6 +52,7 @@ function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
+    submit(formValues, { method: "post", action: "/register" });
   };
 
   return (
@@ -58,6 +60,7 @@ function RegisterPage() {
       fields={fields}
       formValues={formValues}
       handleChangeInputValue={handleChangeInputValue}
+      handleSubmit={handleSubmit}
       navigate={navigate}
       registerContent={registerContent}
       url={url}

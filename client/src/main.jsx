@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import { sendData } from "./services/api.service.js"
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -41,12 +41,13 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = await request.formData();
           const data = Object.fromEntries(formData);
-          if (formData.status === 201) return redirect("/login");
-          return sendData("api/user", data);
+          const response = await sendData("api/user", data);
+          if (response.ok) return redirect("/LoginPage");
+          return response;
         }
       },
       {
-        path: "/login",
+        path: "/LoginPage",
         element: <LoginPage />,
       },
     ],

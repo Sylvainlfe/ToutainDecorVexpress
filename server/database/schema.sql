@@ -8,8 +8,8 @@ CREATE TABLE contact (
     comment TEXT NOT NULL
 );
 
-CREATE TABLE users (
+CREATE TABLE user (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     email VARCHAR(55) NOT NULL UNIQUE,
-    password VARCHAR(55) NOT NULL
+    password VARCHAR(255) NOT NULL
 );

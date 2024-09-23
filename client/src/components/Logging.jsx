@@ -9,10 +9,11 @@ function Logging({
   registerContent,
   url,
   loginContent,
+  handleSubmit,
 }) {
   console.log(formValues);
   return (
-    <form className="flex flex-col items-center justify-center bg-bg-marbre bg-no-repeat bg-center bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay relative">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center bg-bg-marbre bg-no-repeat bg-center bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay relative">
       <h2 className="text-white mb-1">{url === "register" ? registerContent.title : loginContent.title}</h2>
       {fields.map((field) => (
         <fieldset key={field.id} className="flex flex-col mb-4">
