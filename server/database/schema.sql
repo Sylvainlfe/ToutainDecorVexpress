@@ -7,3 +7,9 @@ CREATE TABLE contact (
     location VARCHAR(100) NOT NULL,
     comment TEXT NOT NULL
 );
+
+CREATE TABLE users (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR(55) NOT NULL UNIQUE,
+    password VARCHAR(55) NOT NULL
+);

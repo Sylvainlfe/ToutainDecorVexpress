@@ -1,4 +1,4 @@
-export async function sendContactData(url, data) {
+export async function sendData(url, data) {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/${url}`, {
       method: "POST",

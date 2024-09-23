@@ -18,8 +18,6 @@ app.use(express.json());
 // Vérification de la connexion à la base de données
 client.checkConnection();
 
-// Initialisation de la base de données
-client.initializeDatabase();
 
 // Routes
 app.get("/api", (req, res) => {
