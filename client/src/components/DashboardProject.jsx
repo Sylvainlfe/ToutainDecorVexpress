@@ -1,10 +1,11 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 
-function DashboardProject( {handleOpenModal} ) {
+function DashboardProject( {handleOpenModal, handleLogout} ) {
   return (
     <>
       <article className="flex flex-col items-center h-lvh justify-center bg-bg-dark-color">
+        <button onClick={handleLogout} id="linkButton">Déconnexion</button>
         <h2>Mon tableau de bord</h2>
         <label htmlFor="text" className="text-white mb-1">
           Rechercher

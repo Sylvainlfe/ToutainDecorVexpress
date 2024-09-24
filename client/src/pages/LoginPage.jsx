@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Logging from "../components/Logging";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSubmit } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const loginContent = {
   title: "Connexion",
@@ -19,6 +20,8 @@ function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [formValues, setFormValues] = useState(emptyFields);
+  const submit = useSubmit();
+  const { message, setMessage } = useContext(AuthContext);
 
   const fields = [
     {
@@ -44,6 +47,15 @@ function LoginPage() {
     setFormValues({ ...formValues, [e.target.id]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submit(formValues, { method: "post", action: "/LoginPage" });
+  };
+
+  const handleCloseModal = () => {
+    setMessage('');
+  };
+
   return (
     <Logging
       fields={fields}
@@ -51,6 +63,9 @@ function LoginPage() {
       handleChangeInputValue={handleChangeInputValue}
       loginContent={loginContent}
       url={url}
+      handleSubmit={handleSubmit}
+      message={message}
+      handleCloseModal={handleCloseModal}
     />
   );
 }

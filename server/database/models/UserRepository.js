@@ -5,6 +5,15 @@ class UserRepository extends AbstractRepository {
     super({ table: "user" });
   }
 
+  async readByEmail(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email = ?`,
+      [email]
+    );
+
+    return rows[0];
+  }
+
   async create(user) {
     const { email, hashedPassword } = user;
     console.log('User data received:', user);

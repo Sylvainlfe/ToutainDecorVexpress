@@ -15,7 +15,9 @@ export async function sendData(url, data) {
     const responseData = await response.json();
     return { ok: true, data: responseData };
   } catch (error) {
-    console.error("Error in sendContactData:", error);
+    console.error("Error in sendData:", error);
     return { ok: false, error: error.message };
   }
 }
+
+
