@@ -1,10 +1,12 @@
 const ContactRepository = require("./models/ContactRepository");
 const UserRepository = require("./models/UserRepository");
+const ProjectRepository = require("./models/ProjectRepository");
 
 const tables = {};
 
 tables.contact = new ContactRepository();
 tables.user = new UserRepository();
+tables.project = new ProjectRepository();
 
 module.exports = new Proxy(tables, {
   get(obj, prop) {

@@ -35,6 +35,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+        action: async ({ request }) => {
+          const formData = await request.formData();
+          const data = Object.fromEntries(formData);
+          return sendData("api/project", data);
+        }
       },
       {
         path: "/register",
@@ -54,7 +59,7 @@ const router = createBrowserRouter([
           const formData = await request.formData();
           const data = Object.fromEntries(formData);
           const response = await sendData("api/login", data);
-          if (response.data.token) {
+          if (response.data && response.data.token) {
             localStorage.setItem('token', response.data.token);
             return redirect("/dashboard");
           }
