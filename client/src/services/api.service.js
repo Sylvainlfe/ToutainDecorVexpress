@@ -36,3 +36,31 @@ export async function sendProjectData(url, formData) {
     return { ok: false, error: error.message };
   }
 }
+
+export async function fetchProjects() {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/project`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return [];
+  }
+}
+
+export async function deleteProject(projectId) {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/project/${projectId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error deleting project:", error);
+    throw error;
+  }
+}

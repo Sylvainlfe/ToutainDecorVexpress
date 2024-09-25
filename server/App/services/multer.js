@@ -1,5 +1,6 @@
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs").promises;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -50,8 +51,42 @@ const formatPhotos = (req, res, next) => {
   }
 };
 
+const deleteFiles = async (files) => {
+  for (const file of files) {
+    const filePath = path.join(__dirname, '../../public/assets/images', file);
+    try {
+      await fs.unlink(filePath);
+    } catch (error) {
+      console.error(`Erreur lors de la suppression du fichier ${file}:`, error);
+    }
+  }
+};
+
+const deleteProjectFiles = async (req, res, next) => {
+  try {
+    if (req.project) {
+      const filesToDelete = [];
+      if (req.project.thumbnail_url) {
+        filesToDelete.push(req.project.thumbnail_url);
+      }
+      if (req.project.photos_url) {
+        // Vérifiez si photos_url est déjà un tableau, sinon parsez-le
+        const photosArray = Array.isArray(req.project.photos_url) 
+          ? req.project.photos_url 
+          : JSON.parse(req.project.photos_url);
+        filesToDelete.push(...photosArray);
+      }
+      await deleteFiles(filesToDelete);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   upload,
   formatThumbnail,
   formatPhotos,
+  deleteProjectFiles,
 };

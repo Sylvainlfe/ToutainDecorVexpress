@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { upload, formatThumbnail, formatPhotos } = require("../../services/multer");
+const { upload, formatThumbnail, formatPhotos, deleteProjectFiles } = require("../../services/multer");
 const projectAction = require("../../controllers/projectAction");
 
 router.post(
@@ -14,5 +14,11 @@ router.post(
   formatPhotos,
   projectAction.add
 );
+
+router.get("/", projectAction.getAll);
+
+router.delete("/:id", projectAction.remove, deleteProjectFiles, (req, res) => {
+  res.json({ ok: true, message: 'Projet et fichiers associés supprimés avec succès' });
+});
 
 module.exports = router;

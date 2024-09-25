@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import FocusLock from "react-focus-lock";
 
-function DashboardModal({ isModalOpen, handleCloseModal }) {
+function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
   const [formData, setFormData] = useState({
     title: "",
     location: "",
@@ -57,6 +57,7 @@ function DashboardModal({ isModalOpen, handleCloseModal }) {
       if (fetcher.data.ok) {
         console.log("Projet ajouté avec succès:", fetcher.data.data.data);
         handleCloseModal();
+        refreshProjects();
       } else {
         console.error("Erreur lors de l'ajout du projet:", fetcher.data.error);
       }

@@ -14,4 +14,28 @@ const add = async (req, res, next) => {
     }
   };
 
-module.exports = { add };
+  const getAll = async (req, res, next) => {
+    try {
+      const projects = await tables.project.readAll();
+      res.json(projects);
+    } catch (err) {
+      console.error('Erreur lors de la récupération des projets:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  };
+  
+  const remove = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const project = await tables.project.delete(id);
+      req.project = project; // Ajoutez le projet à la requête pour le middleware deleteProjectFiles
+      next();
+    } catch (err) {
+      console.error('Erreur lors de la suppression du projet:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  };
+
+module.exports = { add, getAll, remove };
+
+
