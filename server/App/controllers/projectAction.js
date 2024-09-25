@@ -2,34 +2,16 @@ const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
     try {
-        const { title, location, description } = req.body;
-        let thumbnail_url = null;
-        let photos_url = [];
-
-        if (req.files && req.files['thumbnail_url']) {
-            thumbnail_url = req.files['thumbnail_url'][0].path;
-        }
-
-        if (req.files && req.files['photos_url']) {
-            photos_url = req.files['photos_url'].map(file => file.path);
-        }
-
-        const project = {
-            title,
-            location,
-            description,
-            thumbnail_url,
-            photos_url
-        };
-
-        const insertId = await tables.project.create(project);
-
-        res.status(201).json({ insertId });
+      console.log('Fichiers reçus:', req.files);
+      console.log('Corps de la requête:', req.body);
+      console.log('Headers de la requête:', req.headers);
+      const project = req.body;
+      const insertId = await tables.project.create(project);
+      res.status(201).json({ ok: true, data: { insertId, ...project } });
     } catch (err) {
-        next(err);
+      console.error('Erreur lors de l\'ajout du projet:', err);
+      res.status(400).json({ ok: false, error: err.message });
     }
-};
+  };
 
-module.exports = {
-    add
-}
+module.exports = { add };

@@ -14,6 +14,7 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use('/assets', express.static('public/assets'));
 
 // Vérification de la connexion à la base de données
 client.checkConnection();

@@ -14,4 +14,8 @@ const loginRouter = require("./login/router");
 
 router.use("/login", loginRouter);
 
+const projectRouter = require("./project/router");
+
+router.use("/project", projectRouter);
+
 module.exports = router;

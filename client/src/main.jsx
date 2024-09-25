@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import { sendData } from "./services/api.service.js";
+import { sendData, sendProjectData } from "./services/api.service.js";
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
@@ -37,8 +37,9 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         action: async ({ request }) => {
           const formData = await request.formData();
-          const data = Object.fromEntries(formData);
-          return sendData("api/project", data);
+          const response = await sendProjectData("api/project", formData);
+          console.log("Réponse du serveur:", response);
+          return response;
         }
       },
       {
