@@ -2,7 +2,7 @@ import React from "react";
 
 function NewsProjectsSection() {
   return (
-    <article id="NewsProjectsSection" className="bg-bg-light-color h-lvh">
+    <article id="NewsProjectsSection" className="bg-light-color h-lvh">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est reiciendis
         explicabo officia quas quam voluptatibus repudiandae ipsam
