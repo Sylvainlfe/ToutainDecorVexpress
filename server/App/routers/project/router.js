@@ -17,6 +17,8 @@ router.post(
 
 router.get("/", projectAction.getAll);
 
+router.get("/:id", projectAction.getById);
+
 router.delete("/:id", projectAction.remove, deleteProjectFiles, (req, res) => {
   res.json({ ok: true, message: 'Projet et fichiers associés supprimés avec succès' });
 });

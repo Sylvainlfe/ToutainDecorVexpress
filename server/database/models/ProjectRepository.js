@@ -17,6 +17,19 @@ class ProjectRepository extends AbstractRepository {
         }
     }
 
+    async read(id) {
+        const connection = await this.database.getConnection();
+        try {
+            const [rows] = await connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id]);
+            return rows[0];
+        } catch (error) {
+            console.error('Erreur lors de la récupération du projet:', error);
+            throw error;
+        } finally { 
+            connection.release();
+        }
+    }
+
     async delete(id) {
         const connection = await this.database.getConnection();
         try {

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import { sendData, sendProjectData } from "./services/api.service.js";
+import { fetchProjectById, fetchProjects, sendData, sendProjectData } from "./services/api.service.js";
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./context/AuthContext";
+import ViewingPage from "./pages/ViewingPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,10 +32,18 @@ const router = createBrowserRouter([
       {
         path: "/ProjectsPage",
         element: <ProjectsPages />,
+        loader: async () => {
+          const projects = await fetchProjects();
+          return projects;
+        }
       },
       {
         path: "/dashboard",
         element: <Dashboard />,
+        loader: async () => {
+          const projects = await fetchProjects();
+          return { projects };
+        },
         action: async ({ request }) => {
           const formData = await request.formData();
           const response = await sendProjectData("api/project", formData);
@@ -65,6 +74,14 @@ const router = createBrowserRouter([
             return redirect("/dashboard");
           }
           return response;
+        }
+      },
+      {
+        path: "/viewingPage/:id",
+        element: <ViewingPage />,
+        loader: async ({ params }) => {
+          const project = await fetchProjectById(params.id);
+          return  project;
         }
       }
     ],

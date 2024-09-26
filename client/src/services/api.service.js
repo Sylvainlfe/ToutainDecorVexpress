@@ -64,3 +64,16 @@ export async function deleteProject(projectId) {
     throw error;
   }
 }
+
+export async function fetchProjectById(id) {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/project/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching project:", error);
+    throw error;
+  }
+}

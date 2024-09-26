@@ -13,7 +13,10 @@ export default {
       },
       backgroundImage: {
         "bg-marbre":"url('/src/assets/images/bg-marbre.jpg')"
-      }
+      },
+      fontFamily: {
+        "logo-font": ["BonheurRoyal", "sans-serif"],
+      },
     },
   },
   plugins: [],

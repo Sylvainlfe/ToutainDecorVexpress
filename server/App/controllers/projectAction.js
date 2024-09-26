@@ -36,6 +36,17 @@ const add = async (req, res, next) => {
     }
   };
 
-module.exports = { add, getAll, remove };
+  const getById = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const project = await tables.project.read(id);
+      res.json(project);
+    } catch (err) {
+      console.error('Erreur lors de la récupération du projet:', err);
+      res.status(500).json({ ok: false, error: err.message });  
+    }
+  };
+
+module.exports = { add, getAll, remove, getById };
 
 
