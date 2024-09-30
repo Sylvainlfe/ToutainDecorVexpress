@@ -8,9 +8,10 @@ import { deleteProject, fetchProjects } from "../services/api.service";
 function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useContext(AuthContext);
+  const { logout, isAuthenticated } = useContext(AuthContext);
 
   const [projects, setProjects] = useState([]);
+  const [editingProject, setEditingProject] = useState(null);
 
   const refreshProjects = async () => {
     const fetchedProjects = await fetchProjects();
@@ -26,12 +27,18 @@ function Dashboard() {
     }
   };
 
+  const handleEditProject = (project) => {
+    setEditingProject(project);
+    setIsModalOpen(true);
+  };
+
   useEffect(() => {
     refreshProjects();
   }, []);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
+    setEditingProject(null);
   };
 
   const handleCloseModal = () => {
@@ -50,11 +57,13 @@ function Dashboard() {
         handleLogout={handleLogout}
         projects={projects}
         handleDeleteProject={handleDeleteProject}
+        handleEditProject={handleEditProject}
       />
       <DashboardModal
         isModalOpen={isModalOpen}
         handleCloseModal={handleCloseModal}
         refreshProjects={refreshProjects}
+        editingProject={editingProject}
       />
     </main>
   );

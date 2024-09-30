@@ -23,4 +23,9 @@ router.delete("/:id", projectAction.remove, deleteProjectFiles, (req, res) => {
   res.json({ ok: true, message: 'Projet et fichiers associés supprimés avec succès' });
 });
 
+router.put("/:id", upload.fields([
+  { name: "thumbnail_url", maxCount: 1 },
+  { name: "photos_url", maxCount: 20 },
+]), formatThumbnail, formatPhotos, projectAction.update);
+
 module.exports = router;

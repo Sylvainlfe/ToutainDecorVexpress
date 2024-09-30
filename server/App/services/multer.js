@@ -89,4 +89,5 @@ module.exports = {
   formatThumbnail,
   formatPhotos,
   deleteProjectFiles,
+  deleteFiles,
 };

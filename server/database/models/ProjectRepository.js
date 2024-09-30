@@ -81,6 +81,33 @@ class ProjectRepository extends AbstractRepository {
           connection.release();
         }
       }
+
+      async update(id, project) {
+        const connection = await this.database.getConnection();
+        
+        try {
+          await connection.beginTransaction();
+      
+          const { title, location, description, thumbnail_url, photos_url } = project;
+      
+          if (!title) {
+            throw new Error("Le titre du projet ne peut pas être vide");
+          }
+      
+          const [result] = await connection.query(
+            `UPDATE ${this.table} SET title = ?, location = ?, description = ?, thumbnail_url = ?, photos_url = ? WHERE id = ?`,
+            [title, location, description, thumbnail_url, JSON.stringify(photos_url), id]
+          );
+      
+          await connection.commit();
+          return result.affectedRows > 0;
+        } catch (error) {
+          await connection.rollback();
+          throw error;
+        } finally {
+          connection.release();
+        }
+      }
 }
 
 module.exports = ProjectRepository;

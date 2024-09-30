@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ProjectCard({ project, onDelete, showDeleteButton = true }) {
+function ProjectCard({ project, onDelete, showDeleteButton = true, onEdit }) {
   const backgroundStyle = project.thumbnail_url
     ? {
         backgroundImage: `url(${import.meta.env.VITE_API_URL}/assets/images/${
@@ -21,15 +21,26 @@ function ProjectCard({ project, onDelete, showDeleteButton = true }) {
         <p className="text-white mb-2">Lieu : {project.location}</p>
         <p className="text-white mb-4">{project.description}</p>
         {showDeleteButton && (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onDelete(project.id);
-            }}
-            className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 self-start"
-          >
-            Supprimer
-          </button>
+          <>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onDelete(project.id);
+              }}
+              className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 self-start mr-2"
+            >
+              Supprimer
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onEdit(project);
+              }}
+              className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 self-start"
+            >
+              Modifier
+            </button>
+          </>
         )}
       </article>
     </Link>

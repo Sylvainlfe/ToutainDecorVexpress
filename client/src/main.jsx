@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import { fetchProjectById, fetchProjects, sendData, sendProjectData } from "./services/api.service.js";
+import { fetchProjectById, fetchProjects, sendData, sendProjectData, updateProject } from "./services/api.service.js";
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
@@ -82,6 +82,16 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           const project = await fetchProjectById(params.id);
           return  project;
+        }
+      },
+      {
+        path: "/dashboard/:id",
+        action: async ({ params, request }) => {
+          const formData = await request.formData();
+          console.log("FormData content:", Object.fromEntries(formData));
+          const response = await updateProject(params.id, formData);
+          console.log("Réponse du serveur:", response);
+          return response;
         }
       }
     ],

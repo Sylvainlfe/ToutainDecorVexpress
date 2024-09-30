@@ -2,7 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import FocusLock from "react-focus-lock";
 
-function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
+function DashboardModal({
+  isModalOpen,
+  handleCloseModal,
+  refreshProjects,
+  editingProject,
+}) {
   const [formData, setFormData] = useState({
     title: "",
     location: "",
@@ -48,18 +53,37 @@ function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
         formDataToSend.append(key, formData[key]);
       }
     }
-    fetcher.submit(formDataToSend, { method: "POST", action: "/dashboard", encType: "multipart/form-data" });
+  
+    // Assurez-vous que le titre est inclus et non vide
+    if (!formDataToSend.get('title') || formDataToSend.get('title').trim() === '') {
+      alert("Le titre du projet ne peut pas être vide");
+      return;
+    }
+  
+    if (editingProject) {
+      fetcher.submit(formDataToSend, {
+        method: "PUT",
+        action: `/dashboard/${editingProject.id}`,
+        encType: "multipart/form-data",
+      });
+    } else {
+      fetcher.submit(formDataToSend, {
+        method: "POST",
+        action: "/dashboard",
+        encType: "multipart/form-data",
+      });
+    }
   };
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
       console.log("Réponse du serveur:", fetcher.data);
       if (fetcher.data.ok) {
-        console.log("Projet ajouté avec succès:", fetcher.data.data.data);
+        console.log("Projet mis à jour avec succès:", fetcher.data.message);
         handleCloseModal();
         refreshProjects();
       } else {
-        console.error("Erreur lors de l'ajout du projet:", fetcher.data.error);
+        console.error("Erreur lors de la mise à jour du projet:", fetcher.data.error);
       }
     }
   }, [fetcher]);
@@ -85,6 +109,26 @@ function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
     }
   };
 
+  useEffect(() => {
+    if (editingProject) {
+      setFormData({
+        title: editingProject.title,
+        location: editingProject.location,
+        description: editingProject.description,
+        thumbnail_url: null,
+        photos_url: [],
+      });
+    } else {
+      setFormData({
+        title: "",
+        location: "",
+        description: "",
+        thumbnail_url: null,
+        photos_url: [],
+      });
+    }
+  }, [editingProject]);
+
   return (
     <FocusLock>
       <dialog
@@ -92,8 +136,12 @@ function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
         className="bg-white p-6 rounded-lg w-full max-w-md place-self-center"
         onClick={handleBackdropClick}
       >
-        <form onSubmit={handleSubmit} encType="multipart/form-data" className="grid grid-cols-2 gap-4">
-          <h2 className="text-2xl mb-4 col-span-2">Ajouter un projet</h2>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="grid grid-cols-2 gap-4"
+        >
+          <h2 className="text-2xl mb-4 col-span-2">{editingProject ? "Modifier le projet" : "Ajouter un projet"}</h2>
           <input
             type="text"
             name="title"
@@ -130,11 +178,18 @@ function DashboardModal({ isModalOpen, handleCloseModal, refreshProjects }) {
             onChange={handleFileChange}
             className="col-span-2 p-2 border rounded"
           />
-          <button type="button" onClick={handleCloseModal} className="bg-gray-300 px-4 py-2 rounded">
+          <button
+            type="button"
+            onClick={handleCloseModal}
+            className="bg-gray-300 px-4 py-2 rounded"
+          >
             Fermer
           </button>
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-            Ajouter
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            {editingProject ? "Modifier" : "Ajouter"}
           </button>
         </form>
       </dialog>
