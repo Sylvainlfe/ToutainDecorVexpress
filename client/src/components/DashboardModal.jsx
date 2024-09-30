@@ -1,133 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useFetcher } from "react-router-dom";
+import React from "react";
 import FocusLock from "react-focus-lock";
 
 function DashboardModal({
-  isModalOpen,
   handleCloseModal,
-  refreshProjects,
   editingProject,
+  handleChange,
+  handleFileChange,
+  handleSubmit,
+  formData,
+  modalRef,
+  handleBackdropClick,
 }) {
-  const [formData, setFormData] = useState({
-    title: "",
-    location: "",
-    description: "",
-    thumbnail_url: null,
-    photos_url: [],
-  });
-  const modalRef = useRef(null);
-  const fetcher = useFetcher();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    if (name === "thumbnail_url") {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: files[0],
-      }));
-    } else if (name === "photos_url") {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: Array.from(files),
-      }));
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      if (key === "photos_url") {
-        formData[key].forEach((file) => formDataToSend.append("photos_url", file));
-      } else if (key === "thumbnail_url") {
-        formDataToSend.append("thumbnail_url", formData[key]);
-      } else {
-        formDataToSend.append(key, formData[key]);
-      }
-    }
   
-    // Assurez-vous que le titre est inclus et non vide
-    if (!formDataToSend.get('title') || formDataToSend.get('title').trim() === '') {
-      alert("Le titre du projet ne peut pas être vide");
-      return;
-    }
-  
-    if (editingProject) {
-      fetcher.submit(formDataToSend, {
-        method: "PUT",
-        action: `/dashboard/${editingProject.id}`,
-        encType: "multipart/form-data",
-      });
-    } else {
-      fetcher.submit(formDataToSend, {
-        method: "POST",
-        action: "/dashboard",
-        encType: "multipart/form-data",
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (fetcher.state === "idle" && fetcher.data) {
-      console.log("Réponse du serveur:", fetcher.data);
-      if (fetcher.data.ok) {
-        console.log("Projet mis à jour avec succès:", fetcher.data.message);
-        handleCloseModal();
-        refreshProjects();
-      } else {
-        console.error("Erreur lors de la mise à jour du projet:", fetcher.data.error);
-      }
-    }
-  }, [fetcher]);
-
-  useEffect(() => {
-    const dialogElement = modalRef.current;
-    if (isModalOpen) {
-      dialogElement.showModal();
-    } else {
-      dialogElement.close();
-    }
-  }, [isModalOpen]);
-
-  const handleBackdropClick = (e) => {
-    const dialogDimensions = modalRef.current.getBoundingClientRect();
-    if (
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom
-    ) {
-      handleCloseModal();
-    }
-  };
-
-  useEffect(() => {
-    if (editingProject) {
-      setFormData({
-        title: editingProject.title,
-        location: editingProject.location,
-        description: editingProject.description,
-        thumbnail_url: null,
-        photos_url: [],
-      });
-    } else {
-      setFormData({
-        title: "",
-        location: "",
-        description: "",
-        thumbnail_url: null,
-        photos_url: [],
-      });
-    }
-  }, [editingProject]);
 
   return (
     <FocusLock>
