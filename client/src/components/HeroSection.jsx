@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
-    <article className="flex flex-col justify-center items-center bg-bg-marbre bg-no-repeat bg-center bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay relative">
+    <article className="flex flex-col justify-center items-center bg-bg-marbre bg-no-repeat bg-[center_top_-7.5rem] bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay ">
       <h2 className="text-white">PLUS DE QUINZE ANNÉES D'EXPÉRIENCE</h2>
       <p className="text-white text-wrap indent-8 mx-8 my-4">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia sint ut
@@ -18,7 +18,7 @@ function HeroSection() {
         exercitationem quam odio molestias non labore laudantium voluptas
         officiis.
       </p>
-      <Link to="/ProjectsPage" className="text-white" id='linkButton'>
+      <Link to="/ProjectsPage" className="custom-link-button">
         Découvrez
       </Link>
     </article>

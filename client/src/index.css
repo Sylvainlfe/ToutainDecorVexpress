@@ -36,66 +36,32 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+@layer components {
+  .custom-link-button {
+    @apply inline-flex items-center text-white border border-white py-1 px-5 uppercase z-10 relative bg-transparent;
+  }
+
+  .custom-link-button::before {
+    content: "";
+    @apply bg-white block w-[45px] h-[1px] mr-5;
+  }
+
+  .custom-link-button::after {
+    content: "";
+    @apply bg-[#DDC962] block w-0 h-full right-0 top-0 absolute -z-10 transition-all duration-300 ease-out;
+  }
+
+  .custom-link-button:hover {
+    @apply text-[#232963] no-underline transition-all duration-300 ease-out;
+  }
+
+  .custom-link-button:hover::after {
+    @apply w-full transition-all duration-300 ease-out;
+  }
+
+  .custom-link-button:hover::before {
+    @apply bg-[#232963] transition-all duration-300 ease-out;
+  }
 
 
-#linkButton {
-  display: inline-flex;
-  align-items: center;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 5px 20px;
-  text-transform: uppercase;
-  z-index: 1;
-  position: relative;
-  background-color: transparent;
-}
-
-#linkButton::before {
-  content: "";
-  background-color: #fff;
-  display: block;
-  width: 45px;
-  height: 1px;
-  margin-right: 20px;
-}
-
-#linkButton::after {
-  content: "";
-  background-color: #DDC962;
-  display: block;
-  width: 0%;
-  height: 100%;
-  right: 0;
-  top: 0;
-  position: absolute;
-  z-index: -1;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-
-#linkButton:hover {
-  color: #232963;
-  text-decoration: none;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-
-#linkButton:hover::after {
-  width: 100%;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-
-#linkButton:hover::before {
-  background-color: #232963;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
 }

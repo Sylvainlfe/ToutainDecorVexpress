@@ -6,9 +6,9 @@ function ProjectsPage() {
   const projects = useLoaderData();
 
   return (
-    <main className="bg-light-color">
-      <h2>Mes réalisations</h2>
-      <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+    <main className="bg-marbre-gris bg-cover bg-no-repeat bg-[center_top_-7.5rem] lg:h-lvh bg-black bg-opacity-50 bg-blend-overlay flex items-center flex-col">
+      <h2 className="font-bold text-3xl text-white border-r-4 border-gold-color my-4 ml-4 pr-2 self-start">Mes réalisations</h2>
+      <article className="flex flex-col gap-4 flex-wrap lg:grid lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

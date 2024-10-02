@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./context/AuthContext";
 import ViewingPage from "./pages/ViewingPage.jsx";
+import ProtectedDashboardRoute from "./components/ProtectedDashboardRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <ProtectedDashboardRoute><Dashboard /></ProtectedDashboardRoute>,
         loader: async () => {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            return redirect('/LoginPage');
+          }
           const projects = await fetchProjects();
           return { projects };
         },

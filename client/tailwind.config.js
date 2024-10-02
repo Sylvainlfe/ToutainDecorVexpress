@@ -13,12 +13,13 @@ export default {
         "gold-color": "#DDC962",
       },
       backgroundImage: {
-        "bg-marbre":"url('/src/assets/images/bg-marbre.jpg')"
+        "bg-marbre":"url('./src/assets/images/bg-marbre.jpg')",
+        "marbre-gris": "url('./src/assets/images/marbre-gris.jpg')",
       },
       fontFamily: {
         "logo-font": ["BonheurRoyal", "sans-serif"],
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
 }
