@@ -19,13 +19,23 @@
   src: url("./assets/fonts/PlayfairDisplay-Regular.ttf");
 }
 
-:root {
-  --logoFont: "BonheurRoyal", sans-serif;
-  --textFont: "PlayfairDisplay", sans-serif;
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Regular.ttf");
 }
 
-p, a, li, h2, button, label, input {
-  font-family: var(--textFont);
+:root {
+  --logoFont: "BonheurRoyal", sans-serif;
+  --primaryTextFont: "PlayfairDisplay", sans-serif;
+  --secondaryTextFont: "Roboto", arial;
+}
+
+a, li, button, label, input {
+  font-family: var(--primaryTextFont);
+}
+
+p, h2 {
+  font-family: var(--secondaryTextFont);
 }
 
 h1 {
@@ -35,6 +45,8 @@ h1 {
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+
 
 @layer components {
   .custom-link-button {
@@ -48,7 +60,7 @@ dialog::backdrop {
 
   .custom-link-button::after {
     content: "";
-    @apply bg-[#DDC962] block w-0 h-full right-0 top-0 absolute -z-10 transition-all duration-300 ease-out;
+    @apply bg-[#A67C00] block w-0 h-full right-0 top-0 absolute -z-10 transition-all duration-300 ease-out;
   }
 
   .custom-link-button:hover {

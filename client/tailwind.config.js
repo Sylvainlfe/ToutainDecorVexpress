@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "logo-color":"#DDC962",
+        "logo-color":"#A67C00",
         "light-color": "#FAFAFA",
         "bg-dark-color": "#473335",
-        "gold-color": "#DDC962",
+        "gold-color": "#A67C00",
+        "sapin": "#042F27"
       },
       backgroundImage: {
         "bg-marbre":"url('./src/assets/images/bg-marbre.jpg')",
