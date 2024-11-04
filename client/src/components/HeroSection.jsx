@@ -15,9 +15,11 @@ function HeroSection() {
         recusandae! Suscipit nemo culpa quia. Dolorum reprehenderit nobis illo
         eius voluptates eos.
       </p>
-      <Link to="/ProjectsPage" className="custom-link-button">
-        Découvrez
-      </Link>
+      <button>
+        <Link to="/ProjectsPage" className="flex justify-center items-center border border-transparent text-xl font-bold w-32 p-3 text-[#0f1011] bg-gold-color backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-color hover:border-gold-color hover:border hover:duration-300">
+          Découvrez
+        </Link>
+      </button>
     </article>
   );
 }

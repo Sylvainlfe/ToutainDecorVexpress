@@ -48,32 +48,4 @@ dialog::backdrop {
 
 
 
-@layer components {
-  .custom-link-button {
-    @apply inline-flex items-center text-white text-xl border border-white py-1 px-5 uppercase z-10 relative bg-transparent;
-  }
 
-  .custom-link-button::before {
-    content: "";
-    @apply bg-white block w-[45px] h-[1px] mr-5;
-  }
-
-  .custom-link-button::after {
-    content: "";
-    @apply bg-[#A67C00] block w-0 h-full right-0 top-0 absolute -z-10 transition-all duration-300 ease-out;
-  }
-
-  .custom-link-button:hover {
-    @apply text-[#232963] no-underline transition-all duration-300 ease-out;
-  }
-
-  .custom-link-button:hover::after {
-    @apply w-full transition-all duration-300 ease-out;
-  }
-
-  .custom-link-button:hover::before {
-    @apply bg-[#232963] transition-all duration-300 ease-out;
-  }
-
-
-}

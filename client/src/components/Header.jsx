@@ -3,18 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 
 function Header() {
   const location = useLocation();
-  const isLocationUrl = location.pathname !== "/";
   const [showBurger, setShowBurger] = useState(false);
 
   const handleToggleMenu = () => {
     setShowBurger(!showBurger);
   };
 
-  const backgroundStyle = isLocationUrl ? "bg-sapin" : "bg-bg-marbre bg-black bg-opacity-50 bg-blend-overlay";
-
   return (
     <nav
-      className={`flex items-center justify-between border-b-2 border-white ${backgroundStyle} bg-cover bg-top bg-no-repeat md:flex-col md:p-2`}
+      className="flex items-center justify-between border-b-2 border-white bg-[#0f1011] md:flex-col md:p-2"
     >
       <Link
         to="/"
@@ -48,9 +45,9 @@ function Header() {
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <a href="#NewsProjectsSection" className="text-white text-xl hover:text-gold-color">
+          <Link to="/#NewsProjectsSection" className="text-white text-xl hover:text-gold-color">
             Nouveautés
-          </a>
+          </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
           <Link to="/ProjectsPage" className="text-white text-xl hover:text-gold-color">
@@ -62,8 +59,8 @@ function Header() {
             À propos
           </Link>
         </li>
-        <li className="md:mx-4">
-          <Link to="/ContactPage" className="custom-link-button">
+        <li className="mb-4 md:mb-0 md:mx-4">
+          <Link to="/ContactPage" className="flex justify-center items-center border border-transparent text-xl font-bold w-32 p-3 text-[#0f1011] bg-gold-color backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-color hover:border-gold-color hover:border hover:duration-300">
             Contact
           </Link>
         </li>

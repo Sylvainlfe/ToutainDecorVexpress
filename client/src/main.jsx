@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./context/AuthContext";
 import ViewingPage from "./pages/ViewingPage.jsx";
 import ProtectedDashboardRoute from "./components/ProtectedDashboardRoute.jsx";
+import NewsProjectsSection from "./components/NewsProjectsSection.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path:"/#NewsProjectsSection",
+        element:<NewsProjectsSection />
       },
       {
         path: "/ContactPage",
