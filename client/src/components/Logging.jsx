@@ -13,7 +13,6 @@ function Logging({
   message,
   handleCloseModal,
 }) {
-  console.log(formValues);
   return (
     <>
       <form
@@ -63,10 +62,10 @@ function Logging({
         </button>
       </form>
       {message && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <p>{message}</p>
-            <button onClick={handleCloseModal} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-40">
+          <div className="bg-[#0f1011] p-6 rounded-lg shadow-lg border-2 border-gold-500 flex justify-center flex-col items-center">
+            <p className="text-white">{message}</p>
+            <button onClick={handleCloseModal} className="mt-4 flex justify-center items-center border-2 border-transparent text-[#0f1011] text-md font-bold py-2 backdrop-blur-sm rounded-full w-32 bg-gold-500 hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border-2 hover:duration-300">
               Fermer
             </button>
           </div>

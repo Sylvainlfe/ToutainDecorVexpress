@@ -17,7 +17,7 @@ function NewsProjectsSection() {
 
   return (
     <main
-      className="bg-light-color flex flex-col items-center h-screen md:flex-row md:justify-evenly md:my-4 md:items-start"
+      className="bg-light-color flex flex-col items-center h-screen md:flex-row md:justify-evenly md:items-start"
       id="NewsProjectsSection"
     >
       <section className="">

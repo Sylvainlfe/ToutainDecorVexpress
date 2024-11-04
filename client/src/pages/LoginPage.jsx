@@ -6,7 +6,7 @@ import AuthContext from "../context/AuthContext";
 const loginContent = {
   title: "Connexion",
   button: "Se connecter",
-  linkToRegister: "Pas de compte ? Créez un compte",
+  linkToRegister: "Pas de compte ? Créez un compte.",
 };
 
 const emptyFields = {
