@@ -33,29 +33,29 @@ function Header() {
         ></span>
       </button>
       <ul
-        className={`z-20 fixed top-0 right-0 flex flex-col items-center justify-center h-full w-full p-8 bg-black bg-opacity-90 transition-all duration-500 md:flex md:flex-row md:relative md:visible md:h-auto md:p-0 md:justify-evenly md:bg-transparent ${
+        className={`z-20 fixed top-0 right-0 flex flex-col items-center justify-center h-full w-full bg-black bg-opacity-90 transition-all duration-500 md:flex md:flex-row md:relative md:visible md:h-auto md:p-0 md:justify-evenly md:bg-transparent ${
           showBurger
             ? "right-0 visible"
             : "right-[-100vw] md:right-0 md:visible"
         }`}
       >
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
+          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
             Accueil
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/#NewsProjectsSection" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
+          <Link to="/#NewsProjectsSection" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
             Nouveautés
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/ProjectsPage" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
+          <Link to="/ProjectsPage" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
             Réalisations
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
+          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
             À propos
           </Link>
         </li>
