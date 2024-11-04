@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-function ProjectPage() {
+function ViewingPage() {
   const project = useLoaderData();
 
   return (
@@ -41,4 +41,4 @@ function ProjectPage() {
   );
 }
 
-export default ProjectPage;
+export default ViewingPage;

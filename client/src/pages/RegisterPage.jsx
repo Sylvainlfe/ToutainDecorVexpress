@@ -10,7 +10,7 @@ const emptyFields = {
 const registerContent = {
   title: "Inscription",
   button: "Créer votre compte",
-  linkToLogin: "Déjà un compte ? Connectez-vous",
+  linkToLogin: "Déjà un compte ? Connectez-vous !",
 };
 
 function RegisterPage() {

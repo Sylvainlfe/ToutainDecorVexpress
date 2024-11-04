@@ -20,7 +20,7 @@ function Logging({
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center bg-bg-marbre bg-no-repeat bg-center bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay relative"
       >
-        <h2 className="text-white mb-1">
+        <h2 className="text-white mb-4 text-2xl">
           {url === "register" ? registerContent.title : loginContent.title}
         </h2>
         {fields.map((field) => (
@@ -40,7 +40,7 @@ function Logging({
               placeholder={field.text}
               aria-label={field.text}
               pattern={field.pattern}
-              className="bg-[#222630] px-4 py-3 outline-none w-[280px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-[#2B3040]"
+              className="bg-[#0f1011] px-4 py-3 outline-none w-80 text-white rounded-full border-2 transition-colors duration-100 border-solid focus:border-gold-400 border-gold-500"
             />
 
             {errors && errors[field.id] && (
@@ -52,13 +52,13 @@ function Logging({
         ))}
         <Link
           to={url === "register" ? "/loginPage" : "/register"}
-          className="mb-10"
+          className="text-white"
         >
           {url === "register"
             ? registerContent.linkToLogin
             : loginContent.linkToRegister}
         </Link>
-        <button id="linkButton" type="submit" className="my-4">
+        <button id="linkButton" type="submit" className="my-4 flex justify-center items-center border border-transparent text-xl font-bold w-52 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border hover:duration-300">
           {url === "register" ? registerContent.button : loginContent.button}
         </button>
       </form>

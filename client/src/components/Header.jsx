@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <nav
-      className="flex items-center justify-between border-b-2 border-white bg-[#0f1011] md:flex-col md:p-2"
+      className="flex items-center justify-between border-b-2 border-gold-500 bg-[#0f1011] md:flex-col md:p-2"
     >
       <Link
         to="/"
@@ -25,7 +25,7 @@ function Header() {
         aria-label="Toggle menu"
       >
         <span
-          className={`relative block w-10 h-1 bg-white rounded transition-all duration-500 content-[''] before:content-[''] before:absolute before:left-0 before:w-10 before:h-1 before:bg-white before:rounded before:transition-all before:duration-500 after:content-[''] after:absolute after:left-0 after:w-10 after:h-1 after:bg-white after:rounded after:transition-all after:duration-500 ${
+          className={`relative block w-10 h-1 bg-gold-500 rounded transition-all duration-500 content-[''] before:content-[''] before:absolute before:left-0 before:w-10 before:h-1 before:bg-gold-500 before:rounded before:transition-all before:duration-500 after:content-[''] after:absolute after:left-0 after:w-10 after:h-1 after:bg-gold-500 after:rounded after:transition-all after:duration-500 ${
             showBurger
               ? "before:rotate-45 before:translate-y-0 after:-rotate-45 after:translate-y-0 w-0 bg-inherit"
               : "before:-translate-y-3 after:translate-y-3"
@@ -40,27 +40,27 @@ function Header() {
         }`}
       >
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/" className="text-white text-xl hover:text-gold-color">
+          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
             Accueil
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/#NewsProjectsSection" className="text-white text-xl hover:text-gold-color">
+          <Link to="/#NewsProjectsSection" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
             Nouveautés
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/ProjectsPage" className="text-white text-xl hover:text-gold-color">
+          <Link to="/ProjectsPage" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
             Réalisations
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/" className="text-white text-xl hover:text-gold-color">
+          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 pl-2 border-transparent hover:text-gold-500 hover:border-l-2 hover:pl-2 hover:duration-300 hover:border-gold-500">
             À propos
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/ContactPage" className="flex justify-center items-center border border-transparent text-xl font-bold w-32 p-3 text-[#0f1011] bg-gold-color backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-color hover:border-gold-color hover:border hover:duration-300">
+          <Link to="/ContactPage" onClick={handleToggleMenu} className="flex justify-center items-center border-2 border-transparent text-xl font-bold w-32 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border-2 hover:duration-300">
             Contact
           </Link>
         </li>

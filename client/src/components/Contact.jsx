@@ -10,11 +10,11 @@ function Contact({
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:bg-marbre-gris lg:bg-no-repeat lg:bg-[center_top_-7.5rem] lg:bg-cover lg:bg-black lg:bg-opacity-50 bg-blend-overlay p-4 bg-light-color"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 bg-fixed bg-bg-marbre bg-no-repeat bg-bottom bg-cover bg-black bg-opacity-50 bg-blend-overlay"
     >
       {fields.map((field) => (
         <fieldset key={field.id} className="flex flex-col mb-4">
-          <label htmlFor={field.id} className="lg:text-white mb-1 text-[#222630]">
+          <label htmlFor={field.id} className="font-bold mb-1 text-white">
             {field.text}{" "}
             {field.required && <span className="text-red-500">*</span>}
           </label>
@@ -26,7 +26,7 @@ function Contact({
               value={formValues[field.id]}
               onChange={handleChangeInputValue}
               aria-label={field.text}
-              className="bg-[#222630] px-4 py-3 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-gold-color border-[#2B3040]"
+              className="bg-[#0f1011] px-4 py-3 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-gold-400 border-gold-500"
             />
           ) : (
             <input
@@ -38,7 +38,7 @@ function Contact({
               onChange={handleChangeInputValue}
               placeholder={field.text}
               aria-label={field.text}
-              className="bg-[#222630] px-4 py-3 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-gold-color border-[#2B3040]"
+              className="bg-[#0f1011] px-4 py-3 outline-none w-full text-white rounded-full border-2 transition-colors duration-100 border-solid focus:border-gold-400 border-gold-500"
             />
           )}
           {errors[field.id] && (
@@ -48,7 +48,7 @@ function Contact({
           )}
         </fieldset>
       ))}
-      <button type="submit" className="my-4 col-span-1 lg:col-span-2 bg-[#222630] px-4 py-3 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid border-[#2B3040] hover:bg-gold-color hover:text-[#2B3040]">
+      <button type="submit" className="my-4 col-span-2 flex justify-center items-center border border-transparent text-xl font-bold w-52 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border hover:duration-300">
         Envoyer
       </button>
     </form>
