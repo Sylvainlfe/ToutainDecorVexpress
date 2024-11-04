@@ -48,7 +48,7 @@ function Contact({
           )}
         </fieldset>
       ))}
-      <button type="submit" className="my-4 col-span-2 flex justify-center items-center border border-transparent text-xl font-bold w-52 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border hover:duration-300">
+      <button type="submit" className="my-4 col-span-2 flex justify-center items-center border border-transparent text-xl font-bold mx-96 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border hover:duration-300">
         Envoyer
       </button>
     </form>

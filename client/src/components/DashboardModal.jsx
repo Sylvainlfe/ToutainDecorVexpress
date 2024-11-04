@@ -12,12 +12,14 @@ function DashboardModal({
   handleBackdropClick,
 }) {
   
+  const inputStyle = "bg-[#0f1011] px-4 py-3 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-gold-400 border-gold-500"
+  const buttonStyle = "flex justify-center items-center border-2 border-transparent text-xl font-bold py-2 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border-2 hover:duration-300"
 
   return (
     <FocusLock>
       <dialog
         ref={modalRef}
-        className="bg-white p-6 rounded-lg w-full max-w-md place-self-center"
+        className="bg-gradient-to-r from-gray-700 via-gray-900 to-[#0f1011] p-6 rounded-lg place-self-center"
         onClick={handleBackdropClick}
       >
         <form
@@ -25,14 +27,14 @@ function DashboardModal({
           encType="multipart/form-data"
           className="grid grid-cols-2 gap-4"
         >
-          <h2 className="text-2xl mb-4 col-span-2">{editingProject ? "Modifier le projet" : "Ajouter un projet"}</h2>
+          <h2 className="text-3xl place-self-center col-span-2 text-white">{editingProject ? "Modifier le projet" : "Ajouter un projet"}</h2>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
             placeholder="Titre"
-            className="col-span-2 p-2 border rounded"
+            className={`col-span-2 ${inputStyle}`}
           />
           <input
             type="text"
@@ -40,38 +42,38 @@ function DashboardModal({
             value={formData.location}
             onChange={handleChange}
             placeholder="Lieu du chantier"
-            className="col-span-2 p-2 border rounded"
+            className={`col-span-2 ${inputStyle}`}
           />
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
             placeholder="Description"
-            className="col-span-2 p-2 border rounded"
+            className={`col-span-2 ${inputStyle}`}
           />
           <input
             type="file"
             name="thumbnail_url"
             onChange={handleFileChange}
-            className="col-span-2 p-2 border rounded"
+            className={`col-span-2 ${inputStyle}`}
           />
           <input
             type="file"
             name="photos_url"
             multiple
             onChange={handleFileChange}
-            className="col-span-2 p-2 border rounded"
+            className={`col-span-2 ${inputStyle}`}
           />
           <button
             type="button"
             onClick={handleCloseModal}
-            className="bg-gray-300 px-4 py-2 rounded"
+            className={`bg-black text-white ${buttonStyle}`}
           >
             Fermer
           </button>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className={`bg-gold-500 text-[#0f1011] ${buttonStyle}`}
           >
             {editingProject ? "Modifier" : "Ajouter"}
           </button>

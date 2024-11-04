@@ -21,11 +21,11 @@ function NewsProjectsSection() {
       id="NewsProjectsSection"
     >
       <section className="">
-        <h2 className="border-l-4 border-gold-color pl-2 text-balance font-bold text-3xl my-4">
+        <h2 className="border-l-4 border-gold-500 pl-2 text-balance font-bold text-3xl my-4">
           Mon dernier chantier
         </h2>
         {lastProject && (
-          <article className="hidden border-l-4 border-gold-color pl-2 mb-4 md:flex md:flex-col">
+          <article className="hidden border-l-4 border-gold-500 pl-2 mb-4 md:flex md:flex-col">
             <h3 className=" font-bold text-2xl ">{lastProject.title}</h3>
             <p>Lieu : {lastProject.location}</p>
             <p>Description : {lastProject.description}</p>

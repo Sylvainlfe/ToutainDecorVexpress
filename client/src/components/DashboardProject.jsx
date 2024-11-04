@@ -9,34 +9,34 @@ function DashboardProject({
   handleEditProject,
 }) {
   return (
-    <main className="flex bg-bg-dark-color flex-col">
-      <article className="flex flex-col gap-4">
+    <main className="flex bg-gradient-to-r from-gray-700 via-gray-900 to-[#0f1011] flex-col">
+      <article className="flex flex-col items-center gap-4 mb-4">
         <button
           onClick={handleLogout}
           id="linkButton"
-          className="self-end bg-[#222630] px-4 py-3 outline-none text-white rounded-full border-2 mt-4 mr-4"
+          className="self-end m-2 flex justify-center items-center border-2 border-transparent text-xl font-bold w-36 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border-2 hover:duration-300"
         >
           Déconnexion
         </button>
-        <h2 className="self-start font-bold text-3xl text-white ml-4 border-l-4 border-gold-color pl-4">
+        <h2 className="border-l-4 border-gold-500 pl-2 text-balance font-bold text-3xl text-white lg:self-start lg:ml-4">
           Mon tableau de bord
         </h2>
           <input
             type="text"
             aria-label="champ de recherche"
             placeholder="Rechercher"
-            className="bg-[#222630] px-4 py-3 outline-none w-[280px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-[#2B3040] self-center"
+            className="bg-[#0f1011] px-4 py-3 outline-none w-80 text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-gold-400 border-gold-500 lg:self-start lg:ml-4"
           />
           <button
             type="button"
             id="linkButton"
-            className="bg-[#222630] px-4 py-3 w-[280px] outline-none text-white rounded-full border-2 self-center mb-4"
+            className="flex justify-center items-center border-2 border-transparent text-xl font-bold w-80 py-2 text-[#0f1011] bg-gold-500 backdrop-blur-sm rounded-full hover:bg-transparent hover:text-gold-500 hover:border-gold-500 hover:border-2 hover:duration-300 lg:self-start lg:ml-4"
             onClick={handleOpenModal}
           >
             Ajouter un projet
           </button>
       </article>
-      <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <article className="grid grid-cols-1 self-center mb-4 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:self-start lg:ml-4">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
