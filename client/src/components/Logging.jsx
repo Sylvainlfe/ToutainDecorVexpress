@@ -14,10 +14,10 @@ function Logging({
   handleCloseModal,
 }) {
   return (
-    <>
+    <main className="flex flex-col items-center justify-center bg-fixed bg-bg-marbre bg-no-repeat bg-center bg-cover h-screen bg-black bg-opacity-50 bg-blend-overlay relative">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center bg-bg-marbre bg-no-repeat bg-center bg-cover h-lvh bg-black bg-opacity-50 bg-blend-overlay relative"
+        className="flex flex-col items-center border-2 border-gold-500 rounded-3xl p-6 backdrop-blur-xl"
       >
         <h2 className="text-white mb-4 text-2xl">
           {url === "register" ? registerContent.title : loginContent.title}
@@ -71,7 +71,7 @@ function Logging({
           </div>
         </div>
       )}
-    </>
+    </main>
   );
 }
 
