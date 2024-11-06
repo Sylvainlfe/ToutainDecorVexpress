@@ -49,7 +49,7 @@ function Footer() {
         </div>
       </nav>
       <aside>
-        <p>Copyright © {new Date().getFullYear()}</p>
+        <Link to="/copyright">Copyright © {new Date().getFullYear()}</Link>
         <Link to="/" className="text-logo-color text-6xl font-logo-font">
           Toutain Décor
         </Link>

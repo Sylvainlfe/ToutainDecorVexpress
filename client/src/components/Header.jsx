@@ -55,7 +55,7 @@ function Header() {
           </Link>
         </li>
         <li className="mb-4 md:mb-0 md:mx-4">
-          <Link to="/" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
+          <Link to="/about" onClick={handleToggleMenu} className="text-white text-xl border-l-2 lg:pl-2 border-transparent hover:text-gold-500 lg:hover:border-l-2 lg:hover:pl-2 hover:duration-300 hover:border-gold-500">
             À propos
           </Link>
         </li>

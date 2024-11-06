@@ -9,6 +9,9 @@ import ProjectsPages from "./pages/ProjectsPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import About from "./pages/About.jsx";
+import Copyright from "./pages/Copyright.jsx";
+import ErrorPage404 from "./pages/ErrorPage404.jsx";
 import { AuthProvider } from "./context/AuthContext";
 import ViewingPage from "./pages/ViewingPage.jsx";
 import ProtectedDashboardRoute from "./components/ProtectedDashboardRoute.jsx";
@@ -95,6 +98,14 @@ const router = createBrowserRouter([
         }
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/copyright",
+        element: <Copyright />,
+      },
+      {
         path: "/dashboard/:id",
         action: async ({ params, request }) => {
           const formData = await request.formData();
@@ -103,7 +114,11 @@ const router = createBrowserRouter([
           console.log("Réponse du serveur:", response);
           return response;
         }
-      }
+      },
+      {
+        path: "*",
+        element: <ErrorPage404 />,
+      },
     ],
   },
 ]);
